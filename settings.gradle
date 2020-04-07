@@ -1,0 +1,2 @@
+rootProject.name='TestCurrencyCourse'
+include ':app'
