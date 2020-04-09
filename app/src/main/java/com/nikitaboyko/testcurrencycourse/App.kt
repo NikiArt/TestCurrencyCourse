@@ -21,11 +21,15 @@ class App : Application() {
         instance = this
     }
 
-    fun isOnline(): Boolean {
+    fun getAppComponent(): AppComponent {
+        return appComponent
+    }
+
+    fun isOffline(): Boolean {
         val cm =
             this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val netInfo = cm.activeNetworkInfo
-        return netInfo != null && netInfo.isConnected
+        return netInfo == null || !netInfo.isConnected
     }
 
 }

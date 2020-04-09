@@ -3,22 +3,29 @@ package com.nikitaboyko.testcurrencycourse.model.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
+import org.simpleframework.xml.Element
+import org.simpleframework.xml.Root
 
+
+@Root(name = "Valute")
 @Entity(tableName = "courses")
 class CurrencyCourse {
 
-    @SerializedName("ID")
+    @field:Element(name = "NumCode")
     @PrimaryKey
-    var id = ""
-    @SerializedName("NumCode")
     @ColumnInfo(name = "currency_code")
     var currencyCode = 0
-    @SerializedName("CharCode")
+    @field:Element(name = "CharCode")
     @ColumnInfo(name = "char_code")
     var charCode = ""
-    @SerializedName("Name")
+    @field:Element(name = "Name")
+    @ColumnInfo(name = "currency")
     var currency = ""
-    @SerializedName("Value")
+    @field:Element(name = "Nominal")
+    @ColumnInfo(name = "nominal")
+    var nominal = 1
+    @field:Element(name = "Value")
+    @ColumnInfo(name = "value")
     var value = ""
+
 }

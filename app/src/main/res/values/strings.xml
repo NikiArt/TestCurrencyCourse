@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TestCurrencyCourse</string>
+    <string name="convert_label">Сумма конвертации</string>
+    <string name="button_convert">Конвертировать</string>
+    <string name="result_of_convertation">Результат конвертации</string>
+    <string name="convert_to_label">Конвертация в:</string>
+    <string name="convert_from_label">Конвертация из:</string>
 </resources>

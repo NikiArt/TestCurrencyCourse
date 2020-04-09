@@ -1,12 +1,12 @@
 package com.nikitaboyko.testcurrencycourse.model.api
 
-import com.nikitaboyko.testcurrencycourse.model.entities.CurrencyCourse
+import com.nikitaboyko.testcurrencycourse.model.entities.ValCurs
 import io.reactivex.Single
 import retrofit2.http.GET
 
 interface ApiRequests {
 
-    @GET("https://api.exchangeratesapi.io/latest?base=EUR")
-    fun getCourses(): Single<MutableList<CurrencyCourse>>
+    @GET("XML_daily.asp")
+    fun getCourses(): Single<ValCurs>
 
 }

@@ -3,7 +3,6 @@ package com.nikitaboyko.testcurrencycourse.model.db
 import com.nikitaboyko.testcurrencycourse.model.entities.CurrencyCourse
 import io.reactivex.Completable
 import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
 
 class RoomCache(private val database: CurrencyDatabase) {
 
@@ -12,21 +11,18 @@ class RoomCache(private val database: CurrencyDatabase) {
         return Completable.fromAction {
             database.getCurrencyDao().insert(courses)
         }
-            .subscribeOn(Schedulers.io())
     }
 
     fun getCourse(currency: String): Single<CurrencyCourse> {
-        return Single.create { emitter ->
-            val currencyCourse = database.getCurrencyDao().getLastCourse(currency)
-            emitter.onSuccess(currencyCourse)
-        }
+        return database.getCurrencyDao().getLastCourse(currency)
     }
 
-    fun getCurrencies(): Single<MutableList<String>> {
-        return Single.create { emitter ->
-            val currencies = database.getCurrencyDao().getCurrencies()
-            emitter.onSuccess(currencies)
-        }
+    fun getCourses(): Single<MutableList<CurrencyCourse>> {
+        return database.getCurrencyDao().getCourses()
+        /*return Single.create { emitter ->
+            val currencyCourses = database.getCurrencyDao().getCourses()
+            emitter.onSuccess(currencyCourses)
+        }*/
     }
 
 }
